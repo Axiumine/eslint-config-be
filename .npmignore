@@ -1,0 +1,11 @@
+node_modules/
+.hg/
+!build/
+.idea/
+.hgignore
+tsconfig.json
+*.sh
+.yarnrc
+yarnrc
+*.log
+.npmignore

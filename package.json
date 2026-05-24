@@ -1,0 +1,76 @@
+{
+	"name": "@axiumine/eslint-config-be",
+	"version": "1.3.6",
+	"description": "Eslint configuration for Backend",
+	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Axiumine/eslint-config-be"
+	},
+	"license": "GPL-3.0-or-later",
+	"private": false,
+	"author": "Giovanni Manzoni <dev@giovannimanzoni.com> (https://www.giovannimanzoni.com)",
+	"contributors": [],
+	"scripts": {
+		"build": "yarn clean && yarn run build:esm",
+		"prepare:all": "echo 'read REAMDE' && rm -rf dist && yarn run build:all",
+		"build:all": "yarn run build:cjs && yarn run build:esm",
+		"build:cjs": "yarn run tsc -p tsconfig.cjs.json && find dist/cjs -type f -name \"*.js\" -exec bash -c 'mv \"$0\" \"${0%.js}.cjs\"' {} \\; && cp -R dist/cjs/* dist/ && rm -rf dist/cjs",
+		"build:esm": "yarn run tspc -p tsconfig.json && find dist/esm -type f -name \"*.js\" -exec bash -c 'mv \"$0\" \"${0%.js}.mjs\"' {} \\; && cp -R dist/esm/* dist/ && rm -rf dist/esm",
+		"clean": "rm -rf ./dist",
+		"prepare": "yarn run build",
+		"lint": "eslint . --fix",
+		"update": "yarn upgrade-interactive --latest --network-timeout 100000"
+	},
+	"files": [
+		"dist/**/*"
+	],
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.mts",
+				"default": "./dist/index.mjs"
+			}
+		}
+	},
+	"dependencies": {},
+	"peerDependencies": {
+		"@eslint/eslintrc": "*",
+		"@eslint/js": "*",
+		"@types/node": "*",
+		"@typescript-eslint/eslint-plugin": "*",
+		"@typescript-eslint/parser": "*",
+		"eslint": "*",
+		"eslint-config-prettier": "*",
+		"eslint-config-standard": "*",
+		"eslint-import-resolver-typescript": "*",
+		"eslint-plugin-jest": "*",
+		"eslint-plugin-n": "*",
+		"eslint-plugin-promise": "*",
+		"eslint-plugin-simple-import-sort": "*",
+		"prettier": "*",
+		"ts-node": "*",
+		"typescript": "*"
+	},
+	"devDependencies": {
+		"@eslint/eslintrc": "^3.0.2",
+		"@eslint/js": "^9.2.0",
+		"@types/node": "^24.0.10",
+		"@typescript-eslint/eslint-plugin": "^8.18.2",
+		"@typescript-eslint/parser": "^8.18.2",
+		"eslint": "^9.2.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-config-standard": "^17.1.0",
+		"eslint-import-resolver-typescript": "^4.4.4",
+		"eslint-plugin-jest": "^29.0.1",
+		"eslint-plugin-n": "^17.6.0",
+		"eslint-plugin-promise": "^7.2.1",
+		"eslint-plugin-simple-import-sort": "^12.1.0",
+		"prettier": "^3.8.1",
+		"ts-node": "^10.9.2",
+		"ts-patch": "^3.3.0",
+		"typescript": "^5.4.5",
+		"typescript-eslint": "^8.57.0",
+		"typescript-transform-paths": "^3.5.6"
+	}
+}
