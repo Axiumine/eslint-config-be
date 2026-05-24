@@ -9,6 +9,9 @@
 	},
 	"license": "GPL-3.0-or-later",
 	"private": false,
+	"publishConfig": {
+		"access": "public"
+	},
 	"author": "Giovanni Manzoni <dev@giovannimanzoni.com> (https://www.giovannimanzoni.com)",
 	"contributors": [],
 	"scripts": {
